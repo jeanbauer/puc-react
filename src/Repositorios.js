@@ -3,7 +3,7 @@ import $ from 'jquery';
 
 class Posts extends Component {
   constructor(props) {
-    super(props);
+    super();
     this.state = { data: [] };
   }
   componentWillMount () {

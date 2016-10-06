@@ -1,20 +1,37 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import Repositorios from './Repositorios';
+import Card from './Card.js';
+import $ from 'jquery';
+
+const apiUrl = 'http://netflixroulette.net/api/api.php?director=Quentin%20Tarantino';
+
+// TODO:
+// make some click handler
+// make API params flexible.
+// create more components.
+// use at least 2 hooks.
 
 class App extends Component {
+  constructor(props) {
+    super();
+    this.state = { data: []};
+  }
+
+  componentDidMount() {
+    $.get(apiUrl, function(data) {
+      this.setState({data});
+    }.bind(this));
+  }
+
+  getMovies() {
+    return this.state.data.map((movie, k) => (
+      <Card key={k} title={movie.show_title} img={movie.poster} />
+    ));
+  }
+
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-        <Repositorios />
+      <div className="slider">
+        {this.getMovies()}
       </div>
     );
   }

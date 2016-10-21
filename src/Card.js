@@ -1,15 +1,18 @@
 import React, {Component} from  'react';
 
 class Card extends Component {
+  getStyle() {
+    return `backgroundImage: url(${this.props.img})`;
+  }
+
   render() {
     return (
-      <div className="card-custom">
-        <div className="thumbnail">
-          <img alt={this.props.title} src={this.props.img}/>
-          <div className="caption">
-            <h4>{this.props.title}</h4>
+      <div style={{backgroundImage:  'url('+ this.props.img + ')'}} className="bg-img">
+        <a href="#">
+          <div className="content">
+            <h2>{this.props.title}</h2>
           </div>
-        </div>
+        </a>
       </div>
     )
   }

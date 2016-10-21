@@ -30,8 +30,11 @@ class App extends Component {
 
   render() {
     return (
-      <div className="slider">
-        {this.getMovies()}
+      <div>
+        <header className="page-head"><h1>Netflix</h1></header>
+        <div className="items">
+          {this.getMovies()}
+        </div>
       </div>
     );
   }
